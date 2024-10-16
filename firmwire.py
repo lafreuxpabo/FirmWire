@@ -16,14 +16,15 @@ from _version import __version__
 log = logging.getLogger("firmwire")
 
 def get_args():
-    print(r"              ___         __   _              ")
-    print(r"-.   .-.   | __|(+) _ _ _ _\ \    / /(+) _ _ ___  .-.    .-")
+    print(r"              ___            __      _                          ")
+    print(r"-.     .-.   | __|(+) _ _ _ _\ \    / /(+) _ _ ___    .-.     .-")
     print(r"  \   /   \  | _|  | | '_| '  \ \/\/ /  | | '_/ -_)  /   \   /  ")
-    print(r"   '-'   '-|_|   | |_| |_|_|_\_/\_/   | |_| \___|-'    '-'   ")
+    print(r"   '-'     '-|_|   | |_| |_|_|_\_/\_/   | |_| \___|-'     '-'   ")
     print(r"             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   v%s" % (__version__))
     print(r"                A  baseband  analysis  platform")
-    print("       https://github.com/FirmWire")
+    print("                   https://github.com/FirmWire")
     print("")
+
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
