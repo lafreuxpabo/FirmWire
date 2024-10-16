@@ -297,7 +297,9 @@ def main() -> int:
         if type(args.injected_task) != type(None):
             if ',' in args.injected_task:
                 args.injected_task = args.injected_task.split(',')
-            injection_modules.extend(list(args.injected_task))
+                injection_modules.extend(list(args.injected_task))
+            else:
+                injection_modules.append(args.injected_task)
         for module_name in injection_modules:
             if module_name is None:
                 continue
