@@ -25,7 +25,6 @@ def get_args():
     print("                   https://github.com/FirmWire")
     print("")
 
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "modem_file", type=str, default=None, help="Modem file to emulate"
@@ -294,11 +293,12 @@ def main() -> int:
         # With shannon we can inject tasks overwriting the old one, even after snapshot restores for quick dev
         # NOTE: if you inject a task AFTER the task boot up phase it WILL NOT ever run. You will need
         # to use GLINK to dynamically register a task. GLINK would need have been loaded from the start in that case
-        asked_modules = [args.fuzz, args.fuzz_triage]
-        if ',' in args.injected_task:
-            args.injected_task = args.injected_task.split(',')
-        asked_modules.extend(list(args.injected_task))
-        for module_name in asked_modules:
+        injection_modules = [args.fuzz, args.fuzz_triage]
+        if type(args.injected_task) != type(None):
+            if ',' in args.injected_task:
+                args.injected_task = args.injected_task.split(',')
+            injection_modules.extend(list(args.injected_task))
+        for module_name in injection_modules:
             if module_name is None:
                 continue
             if not machine.load_and_inject_task(module_name):
@@ -312,5 +312,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
 
